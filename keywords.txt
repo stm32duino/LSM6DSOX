@@ -1,0 +1,103 @@
+#######################################
+# Syntax Coloring Map For LSM6DSOX
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+LSM6DSOXSensor	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+ReadID	KEYWORD2
+Enable_X	KEYWORD2
+Disable_X	KEYWORD2
+Get_X_Sensitivity	KEYWORD2
+Get_X_ODR	KEYWORD2
+Set_X_ODR	KEYWORD2
+Get_X_FS	KEYWORD2
+Set_X_FS	KEYWORD2
+Get_X_AxesRaw	KEYWORD2
+Get_X_Axes	KEYWORD2
+Enable_G	KEYWORD2
+Disable_G	KEYWORD2
+Get_G_Sensitivity	KEYWORD2
+Get_G_ODR	KEYWORD2
+Set_G_ODR	KEYWORD2
+Get_G_FS	KEYWORD2
+Set_G_FS	KEYWORD2
+Get_G_AxesRaw	KEYWORD2
+Get_G_Axes	KEYWORD2
+Read_Reg	KEYWORD2
+Write_Reg	KEYWORD2
+Set_Interrupt_Latch	KEYWORD2
+Enable_Free_Fall_Detection	KEYWORD2
+Disable_Free_Fall_Detection	KEYWORD2
+Set_Free_Fall_Threshold	KEYWORD2
+Set_Free_Fall_Duration	KEYWORD2
+Enable_Pedometer	KEYWORD2
+Disable_Pedometer	KEYWORD2
+Get_Step_Count	KEYWORD2
+Step_Counter_Reset	KEYWORD2
+Enable_Tilt_Detection	KEYWORD2
+Disable_Tilt_Detection	KEYWORD2
+Enable_Wake_Up_Detection	KEYWORD2
+Disable_Wake_Up_Detection	KEYWORD2
+Set_Wake_Up_Threshold	KEYWORD2
+Set_Wake_Up_Duration	KEYWORD2
+Enable_Single_Tap_Detection	KEYWORD2
+Disable_Single_Tap_Detection	KEYWORD2
+Enable_Double_Tap_Detection	KEYWORD2
+Disable_Double_Tap_Detection	KEYWORD2
+Set_Tap_Threshold	KEYWORD2
+Set_Tap_Shock_Time	KEYWORD2
+Set_Tap_Quiet_Time	KEYWORD2
+Set_Tap_Duration_Time	KEYWORD2
+Enable_6D_Orientation	KEYWORD2
+Disable_6D_Orientation	KEYWORD2
+Set_6D_Orientation_Threshold	KEYWORD2
+Get_6D_Orientation_XL	KEYWORD2
+Get_6D_Orientation_XH	KEYWORD2
+Get_6D_Orientation_YL	KEYWORD2
+Get_6D_Orientation_YH	KEYWORD2
+Get_6D_Orientation_ZL	KEYWORD2
+Get_6D_Orientation_ZH	KEYWORD2
+Get_X_DRDY_Status	KEYWORD2
+Get_X_Event_Status	KEYWORD2
+Set_X_SelfTest	KEYWORD2
+Get_G_DRDY_Status	KEYWORD2
+Set_G_SelfTest	KEYWORD2
+Get_FIFO_Num_Samples	KEYWORD2
+Get_FIFO_Full_Status	KEYWORD2
+Set_FIFO_INT1_FIFO_Full	KEYWORD2
+Set_FIFO_Watermark_Level	KEYWORD2
+Set_FIFO_Stop_On_Fth	KEYWORD2
+Set_FIFO_Mode	KEYWORD2
+Get_FIFO_Tag	KEYWORD2
+Get_FIFO_Data	KEYWORD2
+Get_FIFO_X_Axes	KEYWORD2
+Set_FIFO_X_BDR	KEYWORD2
+Get_FIFO_G_Axes	KEYWORD2
+Set_FIFO_G_BDR	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+LSM6DSOX_OK	LITERAL1
+LSM6DSOX_ERROR	LITERAL1
+LSM6DSOX_INT1_PIN	LITERAL1
+LSM6DSOX_INT2_PIN	LITERAL1
+LSM6DSOX_ACC_SENSITIVITY_FS_2G	LITERAL1
+LSM6DSOX_ACC_SENSITIVITY_FS_4G	LITERAL1
+LSM6DSOX_ACC_SENSITIVITY_FS_8G	LITERAL1
+LSM6DSOX_ACC_SENSITIVITY_FS_16G	LITERAL1
+LSM6DSOX_GYRO_SENSITIVITY_FS_125DPS	LITERAL1
+LSM6DSOX_GYRO_SENSITIVITY_FS_250DPS	LITERAL1
+LSM6DSOX_GYRO_SENSITIVITY_FS_500DPS	LITERAL1
+LSM6DSOX_GYRO_SENSITIVITY_FS_1000DPS	LITERAL1
+LSM6DSOX_GYRO_SENSITIVITY_FS_2000DPS	LITERAL1
+
