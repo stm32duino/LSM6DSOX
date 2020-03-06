@@ -2698,7 +2698,25 @@ LSM6DSOXStatusTypeDef LSM6DSOXSensor::Set_FIFO_G_BDR(float Bdr)
   return LSM6DSOX_OK;
 }
 
+LSM6DSOXStatusTypeDef LSM6DSOXSensor::Get_MLC_Status(LSM6DSOX_MLC_Status_t *Status)
+{
+  if (lsm6dsox_mlc_status_get(&reg_ctx, (lsm6dsox_mlc_status_mainpage_t *)Status) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
 
+  return LSM6DSOX_OK;
+}
+
+LSM6DSOXStatusTypeDef LSM6DSOXSensor::Get_MLC_Output(uint8_t *Output)
+{
+  if (lsm6dsox_mlc_out_get(&reg_ctx, Output) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  return LSM6DSOX_OK;
+}
 
 int32_t LSM6DSOX_io_write(void *handle, uint8_t WriteAddr, uint8_t *pBuffer, uint16_t nBytesToWrite)
 {
