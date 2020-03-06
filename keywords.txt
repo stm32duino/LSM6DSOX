@@ -82,6 +82,8 @@ Get_FIFO_X_Axes	KEYWORD2
 Set_FIFO_X_BDR	KEYWORD2
 Get_FIFO_G_Axes	KEYWORD2
 Set_FIFO_G_BDR	KEYWORD2
+Get_MLC_Status	KEYWORD2
+Get_MLC_Output	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)

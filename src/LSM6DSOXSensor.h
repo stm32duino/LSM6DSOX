@@ -89,6 +89,17 @@ typedef struct
   unsigned int SleepStatus : 1;
 } LSM6DSOX_Event_Status_t;
 
+typedef struct {
+  unsigned int is_mlc1 : 1;
+  unsigned int is_mlc2 : 1;
+  unsigned int is_mlc3 : 1;
+  unsigned int is_mlc4 : 1;
+  unsigned int is_mlc5 : 1;
+  unsigned int is_mlc6 : 1;
+  unsigned int is_mlc7 : 1;
+  unsigned int is_mlc8 : 1;
+} LSM6DSOX_MLC_Status_t;
+
 
 /* Class Declaration ---------------------------------------------------------*/
    
@@ -182,6 +193,9 @@ class LSM6DSOXSensor
     LSM6DSOXStatusTypeDef Set_FIFO_X_BDR(float Bdr);
     LSM6DSOXStatusTypeDef Get_FIFO_G_Axes(int32_t *AngularVelocity);
     LSM6DSOXStatusTypeDef Set_FIFO_G_BDR(float Bdr);
+
+    LSM6DSOXStatusTypeDef Get_MLC_Status(LSM6DSOX_MLC_Status_t *Status);
+    LSM6DSOXStatusTypeDef Get_MLC_Output(uint8_t *Output);
     
     /**
      * @brief Utility function to read data.
