@@ -32,6 +32,8 @@ The access to the sensor values is done as explained below:
 
   Read accelerometer and gyroscope.
 
+    int32_t accelerometer[3];
+    int32_t gyroscope[3];
     AccGyr.Get_X_Axes(accelerometer);  
     AccGyr.Get_G_Axes(gyroscope);
 
