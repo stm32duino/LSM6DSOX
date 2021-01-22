@@ -1,0 +1,164 @@
+// --------------------------------------
+// Code for Adafruit Feather STM32F405 Express and Adafruit LSM6DSOX + LIS3MDL - Precision 9 DoF IMU - STEMMA QT / Qwiic. 
+//
+
+#include <Wire.h>
+#include "LSM6DSOXSensor.h"
+#include <Adafruit_NeoPixel.h>
+#include <LIS3MDLSensor.h>
+#include <MadgwickAHRS.h>
+
+//#define I2C2_SCL    PB6
+//#define I2C2_SDA    PB7
+
+int32_t accelerometer;
+int32_t gyroscope;
+int Red = 0;
+int Blue = 5;
+int Green = 8;
+unsigned long time;
+int count = 0;
+boolean debug = true; //if Serial port open at start
+float gx;
+float gy;
+float gz;
+float ax;
+float ay;
+float az;
+float mx;
+float my;
+float mz;
+float roll, pitch, heading;
+
+// Which pin on the Arduino is connected to the NeoPixels?
+#define PIN   8
+// How many NeoPixels are attached to the Arduino?
+#define NUMPIXELS 16 // Popular NeoPixel ring size
+
+// When setting up the NeoPixel library, we tell it how many pixels,
+// and which pin to use to send signals. Note that for older NeoPixel
+// strips you might need to change the third parameter -- see the
+// strandtest example for more information on possible values.
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+
+LSM6DSOXSensor *AccGyr;
+LIS3MDLSensor *Magneto;
+Madgwick filter;
+
+void setup() {
+
+  Serial.begin(152000);
+  Wire.begin();
+  
+  filter.begin(49);
+  AccGyr = new LSM6DSOXSensor (&Wire, LSM6DSOX_I2C_ADD_L);
+  AccGyr->Enable_X();
+  AccGyr->Enable_G();
+  // magnatometer components.
+  Magneto = new LIS3MDLSensor(&Wire,LIS3MDL_MAG_I2C_ADDRESS_LOW);
+  Magneto->Enable();
+  pixels.begin();
+  pixels.clear();
+ }
+
+
+void loop() {
+
+  count = count + 1;
+  if (millis() >= (time + 1000)) {
+  count = count + 1;
+  //Serial.print("Sample Frequency: "); Serial.println(count);
+    time = millis();
+    count = 0;
+  }
+  for (int i = 0; i < NUMPIXELS; i++) { // For each pixel...
+
+  pixels.setPixelColor(i, pixels.Color(Red, Blue, Green));
+    Red = increment_colour(Red);
+    Blue = increment_colour(Blue);
+    Green = increment_colour(Green);
+    pixels.show();
+  }
+
+
+int32_t accelerometer[3];
+int32_t gyroscope[3];
+int32_t magnetometer[3];
+uint8_t Status;
+
+AccGyr->Get_G_DRDY_Status(&Status);
+//Serial.print(millis());Serial.print(",");
+//Serial.print(Status);Serial.print(",");
+AccGyr->Get_X_Axes(accelerometer);
+AccGyr->Get_G_Axes(gyroscope);
+Magneto->GetAxes(magnetometer);
+
+/*Serial.print(accelerometer[0]);
+  Serial.print(", ");
+  Serial.print(accelerometer[1]);
+  Serial.print(", ");
+  Serial.print(accelerometer[2]);
+  Serial.print(", ");// Serial.print(" | Gyr[mdps]: ");
+  Serial.print(gyroscope[0]);
+  Serial.print(", ");
+  Serial.print(gyroscope[1]);
+  Serial.print(" ,");
+  Serial.print(gyroscope[2]);
+  Serial.print(" ,");
+  Serial.print(" | Acc2[mg]: ");
+  Serial.print(magnetometer[0]);
+  Serial.print(",");
+  Serial.print(magnetometer[1]);
+  Serial.print(",");
+  Serial.print(magnetometer[2]);
+  Serial.println("Mag[mGauss]: ");*/
+
+ax = accelerometer[0];
+ay = accelerometer[1];
+az = accelerometer[2];
+gx = gyroscope[0] / 1000;
+gy = gyroscope[1] / 1000;
+gz = gyroscope[2] / 1000;
+mx = magnetometer[0];
+my = magnetometer[1];
+mz = magnetometer[2];
+/*Serial.print(ax);
+Serial.print(", ");
+Serial.print(ay);
+Serial.print(", ");
+Serial.print(ax);
+Serial.print(", ");
+Serial.print(gx);
+Serial.print(", ");
+Serial.print(gy);
+Serial.print(" ,");
+Serial.print(gx);
+Serial.print(",");
+Serial.print(mx);
+Serial.print(",");
+Serial.print(my);
+Serial.print(",");
+Serial.print(mz);
+Serial.print(",");*/
+
+filter.update(gx, gy, gz, ax, ay, az, mx, my, mz);
+roll = filter.getRoll();
+pitch = filter.getPitch();
+heading = filter.getYaw();
+
+
+Serial.print(heading);
+Serial.print(", ");
+Serial.print(pitch);
+Serial.print(", ");
+Serial.println(roll);
+//delay(0);           // wait 5 seconds for next scan
+}
+int increment_colour (int RGB) { // increment colour is if get to 255 set to zero
+  int new_RGB;
+
+  new_RGB = RGB + 1; //increment RGB
+  if (new_RGB > 10)new_RGB = 0;
+  return new_RGB;
+}
