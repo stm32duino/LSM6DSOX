@@ -2,7 +2,7 @@
  ******************************************************************************
    @file    LSM6DSOX_fifo_example_i2c.ino
    @author  Benhalor
-   @version V1.0.0
+   @version V1.0.1
    @date    January 2020
    @brief   Basic example for using the LSM6DSOX library with FIFO.
  ******************************************************************************
@@ -35,9 +35,18 @@
  ******************************************************************************
 */
 
+/* WIRING
+  In order to use the Adafruit lsm6dsox sensor with a ST nucleo board,
+  plug Nucleo "+5V" to AdafruitLSM6DOX "VIN",
+  plug Nucleo "GND" to AdafruitLSM6DOX "GND",
+  plug Nucleo "SCL"(D15) to AdafruitLSM6DOX "SCL",
+  plug Nucleo "SDA"(D14) to AdafruitLSM6DOX "SDA".*/
+
 #include "LSM6DSOXSensor.h"
 
-LSM6DSOXSensor lsm6dsoxSensor = LSM6DSOXSensor(&Wire);
+// Declare LSM6DSOX sensor. Sensor address can have 2 values LSM6DSOX_I2C_ADD_L (corresponds to 0x6A I2C address) or LSM6DSOX_I2C_ADD_H (corresponds to 0x6B I2C address) 
+// On Adafruit lsm6dsox board, LSM6DSOX_I2C_ADD_L is the default address 
+LSM6DSOXSensor lsm6dsoxSensor = LSM6DSOXSensor(&Wire, LSM6DSOX_I2C_ADD_L);
 
 void setup() {
   Serial.begin(115200);
@@ -45,6 +54,9 @@ void setup() {
 
   // Default clock is 100kHz. LSM6DSOX also supports 400kHz, let's use it
   Wire.setClock(400000);
+
+  // Init the sensor
+  lsm6dsoxSensor.begin();
 
   // Enable accelerometer and gyroscope, and check success
   if (lsm6dsoxSensor.Enable_X() == LSM6DSOX_OK && lsm6dsoxSensor.Enable_X() == LSM6DSOX_OK) {
