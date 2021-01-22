@@ -125,6 +125,8 @@ class LSM6DSOXSensor
   public:
     LSM6DSOXSensor(TwoWire *i2c, uint8_t address=LSM6DSOX_I2C_ADD_H);
     LSM6DSOXSensor(SPIClass *spi, int cs_pin, uint32_t spi_speed=2000000);
+    LSM6DSOXStatusTypeDef begin();
+    LSM6DSOXStatusTypeDef end();
     LSM6DSOXStatusTypeDef ReadID(uint8_t *Id);
     LSM6DSOXStatusTypeDef Enable_X();
     LSM6DSOXStatusTypeDef Disable_X();
