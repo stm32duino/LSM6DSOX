@@ -37,7 +37,7 @@
 
 /* WIRING
   In order to use the Adafruit lsm6dsox sensor with a ST nucleo board,
-  plug Nucleo "+5V" to AdafruitLSM6DOX "VIN",
+  plug Nucleo "+3.3V" to AdafruitLSM6DOX "VIN",
   plug Nucleo "GND" to AdafruitLSM6DOX "GND",
   plug Nucleo "SCL"(D15) to AdafruitLSM6DOX "SCL",
   plug Nucleo "SDA"(D14) to AdafruitLSM6DOX "SDA".*/
