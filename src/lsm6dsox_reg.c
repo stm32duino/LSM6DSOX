@@ -9699,9 +9699,11 @@ int32_t lsm6dsox_pin_int1_route_set(lsm6dsox_ctx_t *ctx,
   md1_cfg.int1_single_tap   = val.single_tap;
   md1_cfg.int1_sleep_change = val.sleep_change;
 
+  emb_func_int1.not_used_01 = 0;
   emb_func_int1.int1_step_detector = val.step_detector;
   emb_func_int1.int1_tilt          = val.tilt;
   emb_func_int1.int1_sig_mot       = val.sig_mot;
+  emb_func_int1.not_used_02 = 0;
   emb_func_int1.int1_fsm_lc        = val.fsm_lc;
 
   fsm_int1_a.int1_fsm1 = val.fsm1;
@@ -10029,6 +10031,7 @@ int32_t lsm6dsox_pin_int2_route_set(lsm6dsox_ctx_t *ctx, lsm6dsox_ctx_t *aux_ctx
     int2_ctrl.int2_fifo_ovr  = val.fifo_ovr;
     int2_ctrl.int2_fifo_full = val.fifo_full;
     int2_ctrl.int2_cnt_bdr   = val.fifo_bdr;
+    int2_ctrl.not_used_01    = 0;
 
     md2_cfg.int2_timestamp    = val.timestamp;
     md2_cfg.int2_6d           = val.six_d;
@@ -10038,8 +10041,11 @@ int32_t lsm6dsox_pin_int2_route_set(lsm6dsox_ctx_t *ctx, lsm6dsox_ctx_t *aux_ctx
     md2_cfg.int2_single_tap   = val.single_tap;
     md2_cfg.int2_sleep_change = val.sleep_change;
 
+    emb_func_int2.not_used_01 = 0;
     emb_func_int2. int2_step_detector = val.step_detector;
     emb_func_int2.int2_tilt           = val.tilt;
+    emb_func_int2.int2_sig_mot        = val.sig_mot;
+    emb_func_int2.not_used_02 = 0;
     emb_func_int2.int2_fsm_lc         = val.fsm_lc;
 
     fsm_int2_a.int2_fsm1 = val.fsm1;
@@ -10075,9 +10081,7 @@ int32_t lsm6dsox_pin_int2_route_set(lsm6dsox_ctx_t *ctx, lsm6dsox_ctx_t *aux_ctx
         if ( ( val.drdy_temp | val.timestamp ) != PROPERTY_DISABLE ) {
           ctrl4_c.int2_on_int1 = PROPERTY_DISABLE;
         }
-        else{
-          ctrl4_c.int2_on_int1 = PROPERTY_ENABLE;
-        }
+
         ret = lsm6dsox_write_reg(ctx, LSM6DSOX_CTRL4_C, (uint8_t*)&ctrl4_c, 1);
       }
     }
