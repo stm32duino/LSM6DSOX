@@ -2736,6 +2736,25 @@ LSM6DSOXStatusTypeDef LSM6DSOXSensor::Get_FIFO_Full_Status(uint8_t *Status)
 }
 
 /**
+ * @brief  Get the LSM6DSOX FIFO watermark status
+ * @param  Status FIFO watermark status
+ * @retval 0 in case of success, an error code otherwise
+ */
+LSM6DSOXStatusTypeDef LSM6DSOXSensor::Get_FIFO_Watermark_Status(uint8_t *Status)
+{
+  lsm6dsox_reg_t reg;
+
+  if (lsm6dsox_read_reg(&reg_ctx, LSM6DSOX_FIFO_STATUS2, &reg.byte, 1) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  *Status = reg.fifo_status2.fifo_wtm_ia;
+
+  return LSM6DSOX_OK;
+}
+
+/**
  * @brief  Set the LSM6DSOX FIFO full interrupt on INT1 pin
  * @param  Status FIFO full interrupt on INT1 pin status
  * @retval 0 in case of success, an error code otherwise
