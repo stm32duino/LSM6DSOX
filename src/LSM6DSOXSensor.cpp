@@ -2736,6 +2736,25 @@ LSM6DSOXStatusTypeDef LSM6DSOXSensor::Get_FIFO_Full_Status(uint8_t *Status)
 }
 
 /**
+ * @brief  Get the LSM6DSOX FIFO overrun status
+ * @param  Status FIFO overrun status
+ * @retval 0 in case of success, an error code otherwise
+ */
+LSM6DSOXStatusTypeDef LSM6DSOXSensor::Get_FIFO_Overrun_Status(uint8_t *Status)
+{
+  lsm6dsox_reg_t reg;
+
+  if (lsm6dsox_read_reg(&reg_ctx, LSM6DSOX_FIFO_STATUS2, &reg.byte, 1) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  *Status = reg.fifo_status2.fifo_ovr_ia;
+
+  return LSM6DSOX_OK;
+}
+
+/**
  * @brief  Get the LSM6DSOX FIFO watermark status
  * @param  Status FIFO watermark status
  * @retval 0 in case of success, an error code otherwise
@@ -2771,6 +2790,126 @@ LSM6DSOXStatusTypeDef LSM6DSOXSensor::Set_FIFO_INT1_FIFO_Full(uint8_t Status)
   reg.int1_ctrl.int1_fifo_full = Status;
 
   if (lsm6dsox_write_reg(&reg_ctx, LSM6DSOX_INT1_CTRL, &reg.byte, 1) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  return LSM6DSOX_OK;
+}
+
+/**
+ * @brief  Set the LSM6DSOX FIFO overrun interrupt on INT1 pin
+ * @param  Status FIFO overrun interrupt on INT1 pin status
+ * @retval 0 in case of success, an error code otherwise
+ */
+LSM6DSOXStatusTypeDef LSM6DSOXSensor::Set_FIFO_INT1_FIFO_Overrun(uint8_t Status)
+{
+  lsm6dsox_reg_t reg;
+
+  if (lsm6dsox_read_reg(&reg_ctx, LSM6DSOX_INT1_CTRL, &reg.byte, 1) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  reg.int1_ctrl.int1_fifo_ovr = Status;
+
+  if (lsm6dsox_write_reg(&reg_ctx, LSM6DSOX_INT1_CTRL, &reg.byte, 1) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  return LSM6DSOX_OK;
+}
+
+/**
+ * @brief  Set the LSM6DSOX FIFO threshold interrupt on INT1 pin
+ * @param  Status FIFO threshold interrupt on INT1 pin status
+ * @retval 0 in case of success, an error code otherwise
+ */
+LSM6DSOXStatusTypeDef LSM6DSOXSensor::Set_FIFO_INT1_FIFO_Threshold(uint8_t Status)
+{
+  lsm6dsox_reg_t reg;
+
+  if (lsm6dsox_read_reg(&reg_ctx, LSM6DSOX_INT1_CTRL, &reg.byte, 1) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  reg.int1_ctrl.int1_fifo_th = Status;
+
+  if (lsm6dsox_write_reg(&reg_ctx, LSM6DSOX_INT1_CTRL, &reg.byte, 1) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  return LSM6DSOX_OK;
+}
+
+/**
+ * @brief  Set the LSM6DSOX FIFO full interrupt on INT2 pin
+ * @param  Status FIFO full interrupt on INT2 pin status
+ * @retval 0 in case of success, an error code otherwise
+ */
+LSM6DSOXStatusTypeDef LSM6DSOXSensor::Set_FIFO_INT2_FIFO_Full(uint8_t Status)
+{
+  lsm6dsox_reg_t reg;
+
+  if (lsm6dsox_read_reg(&reg_ctx, LSM6DSOX_INT2_CTRL, &reg.byte, 1) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  reg.int2_ctrl.int2_fifo_full = Status;
+
+  if (lsm6dsox_write_reg(&reg_ctx, LSM6DSOX_INT2_CTRL, &reg.byte, 1) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  return LSM6DSOX_OK;
+}
+
+/**
+ * @brief  Set the LSM6DSOX FIFO overrun interrupt on INT2 pin
+ * @param  Status FIFO overrun interrupt on INT2 pin status
+ * @retval 0 in case of success, an error code otherwise
+ */
+LSM6DSOXStatusTypeDef LSM6DSOXSensor::Set_FIFO_INT2_FIFO_Overrun(uint8_t Status)
+{
+  lsm6dsox_reg_t reg;
+
+  if (lsm6dsox_read_reg(&reg_ctx, LSM6DSOX_INT2_CTRL, &reg.byte, 1) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  reg.int2_ctrl.int2_fifo_ovr = Status;
+
+  if (lsm6dsox_write_reg(&reg_ctx, LSM6DSOX_INT2_CTRL, &reg.byte, 1) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  return LSM6DSOX_OK;
+}
+
+/**
+ * @brief  Set the LSM6DSOX FIFO threshold interrupt on INT2 pin
+ * @param  Status FIFO threshold interrupt on INT2 pin status
+ * @retval 0 in case of success, an error code otherwise
+ */
+LSM6DSOXStatusTypeDef LSM6DSOXSensor::Set_FIFO_INT2_FIFO_Threshold(uint8_t Status)
+{
+  lsm6dsox_reg_t reg;
+
+  if (lsm6dsox_read_reg(&reg_ctx, LSM6DSOX_INT2_CTRL, &reg.byte, 1) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  reg.int2_ctrl.int2_fifo_th = Status;
+
+  if (lsm6dsox_write_reg(&reg_ctx, LSM6DSOX_INT2_CTRL, &reg.byte, 1) != LSM6DSOX_OK)
   {
     return LSM6DSOX_ERROR;
   }
