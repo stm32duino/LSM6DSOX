@@ -1,10 +1,10 @@
 /**
  ******************************************************************************
- * @file    fifo_polling.ino
+ * @file    fifo_interrupt.ino
  * @author  alvaro-oliver
- * @version V1.0.1
+ * @version V1.0.0
  * @date    May 2021
- * @brief   Example for LSM6DSOX library with FIFO status polling.
+ * @brief   Example for LSM6DSOX library with FIFO status interrupts.
  ******************************************************************************
  * @attention
  *
@@ -37,14 +37,33 @@
 
 #include "LSM6DSOXSensor.h"
 
-#define SR 417 // Sample rate. Options are: 12.5, 26, 52, 104, 208, 417, 833, 1667, 3333 and 6667 Hz.
+#define SR 417 // Sample rate. Options are: 12.5, 26, 52, 104, 208, 417, 833, 1667, 3333 and 6667 Hz
 #define WTM_LV 500 // Watermark threshold level. Max samples in this FIFO configuration is 512 (accel and gyro only).
+
+// Define interrupt pins acording to MCU board and sensor wiring.
+#define INT1_pin A0 // MCU input pin connected to sensor INT1 output pin
+#define INT2_pin A1 // MCU imput pin connected to sensor INT2 output pin
 
 /** LSM6DSOX i2c address:
  * LSM6DSOX_I2C_ADD_L: 0x6A (default)
  * LSM6DSOX_I2C_ADD_H: 0x6B 
  **/
 LSM6DSOXSensor lsm6dsoxSensor = LSM6DSOXSensor(&Wire, LSM6DSOX_I2C_ADD_L);
+
+volatile uint8_t wtmFlag = 0; // FIFO watermark flag
+volatile uint8_t fullFlag = 0; // FIFO full flag
+
+// ISR callback for INT1
+void INT1_wtmEvent_cb() {
+
+  wtmFlag = 1;
+}
+
+// ISR callback for INT2
+void INT2_fullEvent_cb() {
+
+  fullFlag = 1;
+}
 
 void setup() {
 
@@ -55,6 +74,12 @@ void setup() {
   // i2c, fast mode
   Wire.begin();
   Wire.setClock(400000);
+
+  // Interrupt pin settings
+  pinMode(INT1_pin, INPUT_PULLUP);
+  pinMode(INT2_pin, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(INT1_pin), INT1_wtmEvent_cb, RISING); // attach watermark event to INT1 input pin
+  attachInterrupt(digitalPinToInterrupt(INT2_pin), INT2_fullEvent_cb, RISING); // attach full event to INT2 input pin
 
   // Initialize sensors
   lsm6dsoxSensor.begin();
@@ -105,13 +130,14 @@ void setup() {
   // FIFO size can be limited to the watermark level by setting the STOP_ON_WTM flag to 1
   //lsm6dsoxSensor.Set_FIFO_Stop_On_Fth(1);
 
+  lsm6dsoxSensor.Set_FIFO_INT1_FIFO_Threshold(1); // enable FIFO threshold interrupt on sensor INT1 pin
+  lsm6dsoxSensor.Set_FIFO_INT2_FIFO_Full(1); // enable FIFO full interrupt on sensor INT2 pin
+
   Serial.println("Starting...");
 }
 
 void loop() {
 
-  static uint8_t wtmStatus = 0; // FIFO watermark status
-  uint8_t fullStatus = 0; // FIFO full status
   uint16_t numSamples = 0; // number of samples in FIFO
   uint8_t Tag; // FIFO data sensor identifier
   int32_t acceleration[3]; // X, Y, Z accelerometer values in mg
@@ -122,14 +148,12 @@ void loop() {
   Serial.print("Samples in FIFO: "); Serial.println(numSamples);
 
   // Check if FIFO threshold level was reached.
-  lsm6dsoxSensor.Get_FIFO_Watermark_Status(&wtmStatus);
-
-  if (wtmStatus != 0) {
+  if (wtmFlag != 0) {
     Serial.println("-- FIFO Watermark level reached!, fetching data.");
 
     // fetch data from FIFO
     for (uint16_t i = 0; i < WTM_LV; i++) {
-
+  
       lsm6dsoxSensor.Get_FIFO_Tag(&Tag); // get data identifier
       
       // Get gyroscope data
@@ -154,16 +178,19 @@ void loop() {
         #endif
       }
     }
+
+    wtmFlag = 0;
   }
 
   // Check if FIFO is full.
-  lsm6dsoxSensor.Get_FIFO_Full_Status(&fullStatus);
-
-  if (fullStatus != 0) {
+  if (fullFlag != 0) {
     Serial.println("-- FIFO is full!, consider reducing Watermark Level or Buffer Data Rate.\nFlushing data from FIFO.");
     lsm6dsoxSensor.Set_FIFO_Mode(LSM6DSOX_BYPASS_MODE); // flush FIFO data
     lsm6dsoxSensor.Set_FIFO_Mode(LSM6DSOX_STREAM_MODE); // continue batching
+
+    fullFlag = 0;
   }
 
-  delay(10); // FIFO continues batching while we sleep 
+  delay(10); // FIFO continues batching while we sleep
+
 }
