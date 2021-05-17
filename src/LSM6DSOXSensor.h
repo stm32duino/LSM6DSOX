@@ -200,7 +200,14 @@ class LSM6DSOXSensor
     
     LSM6DSOXStatusTypeDef Get_FIFO_Num_Samples(uint16_t *NumSamples);
     LSM6DSOXStatusTypeDef Get_FIFO_Full_Status(uint8_t *Status);
+    LSM6DSOXStatusTypeDef Get_FIFO_Overrun_Status(uint8_t *Status);
+    LSM6DSOXStatusTypeDef Get_FIFO_Watermark_Status(uint8_t *Status);
     LSM6DSOXStatusTypeDef Set_FIFO_INT1_FIFO_Full(uint8_t Status);
+    LSM6DSOXStatusTypeDef Set_FIFO_INT1_FIFO_Overrun(uint8_t Status);
+    LSM6DSOXStatusTypeDef Set_FIFO_INT1_FIFO_Threshold(uint8_t Status);
+    LSM6DSOXStatusTypeDef Set_FIFO_INT2_FIFO_Full(uint8_t Status);
+    LSM6DSOXStatusTypeDef Set_FIFO_INT2_FIFO_Overrun(uint8_t Status);
+    LSM6DSOXStatusTypeDef Set_FIFO_INT2_FIFO_Threshold(uint8_t Status);
     LSM6DSOXStatusTypeDef Set_FIFO_Watermark_Level(uint16_t Watermark);
     LSM6DSOXStatusTypeDef Set_FIFO_Stop_On_Fth(uint8_t Status);
     LSM6DSOXStatusTypeDef Set_FIFO_Mode(uint8_t Mode);
