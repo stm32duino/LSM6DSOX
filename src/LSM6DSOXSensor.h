@@ -213,6 +213,7 @@ class LSM6DSOXSensor
     LSM6DSOXStatusTypeDef Set_FIFO_Mode(uint8_t Mode);
     LSM6DSOXStatusTypeDef Get_FIFO_Tag(uint8_t *Tag);
     LSM6DSOXStatusTypeDef Get_FIFO_Data(uint8_t *Data);
+    LSM6DSOXStatusTypeDef Get_FIFO_Sample(uint8_t *Sample, uint16_t Count = 1);
     LSM6DSOXStatusTypeDef Get_FIFO_X_Axes(int32_t *Acceleration);
     LSM6DSOXStatusTypeDef Set_FIFO_X_BDR(float Bdr);
     LSM6DSOXStatusTypeDef Get_FIFO_G_Axes(int32_t *AngularVelocity);
@@ -221,6 +222,11 @@ class LSM6DSOXSensor
     LSM6DSOXStatusTypeDef Get_MLC_Status(LSM6DSOX_MLC_Status_t *Status);
     LSM6DSOXStatusTypeDef Get_MLC_Output(uint8_t *Output);
     
+    LSM6DSOXStatusTypeDef Get_Timestamp_Status(uint8_t *Status);
+    LSM6DSOXStatusTypeDef Set_Timestamp_Status(uint8_t Status);
+
+    LSM6DSOXStatusTypeDef Set_FIFO_Timestamp_Decimation(uint8_t Decimation);
+
     /**
      * @brief Utility function to read data.
      * @param  pBuffer: pointer to data to be read.

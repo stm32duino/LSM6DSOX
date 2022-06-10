@@ -3019,6 +3019,22 @@ LSM6DSOXStatusTypeDef LSM6DSOXSensor::Get_FIFO_Data(uint8_t *Data)
 }
 
 /**
+ * @brief  Get the LSM6DSOX FIFO sample
+ * @param  Sample FIFO sample array [multiple of 7]
+ * @param  Count Count of samples to get.
+ * @retval 0 in case of success, an error code otherwise
+ */
+LSM6DSOXStatusTypeDef LSM6DSOXSensor::Get_FIFO_Sample(uint8_t *Sample, uint16_t Count)
+{
+  if (lsm6dsox_read_reg(&reg_ctx, LSM6DSOX_FIFO_DATA_OUT_TAG, Sample, Count * 7) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  return LSM6DSOX_OK;
+}
+
+/**
  * @brief  Get the LSM6DSOX FIFO accelero single sample (16-bit data per 3 axes) and calculate acceleration [mg]
  * @param  Acceleration FIFO accelero axes [mg]
  * @retval 0 in case of success, an error code otherwise
@@ -3168,6 +3184,72 @@ LSM6DSOXStatusTypeDef LSM6DSOXSensor::Get_MLC_Output(uint8_t *Output)
   }
 
   return LSM6DSOX_OK;
+}
+
+/**
+ * @brief  Get the LSM6DSOX timestamp enable status
+ * @param  Status Timestamp enable status
+ * @retval 0 in case of success, an error code otherwise
+ */
+LSM6DSOXStatusTypeDef LSM6DSOXSensor::Get_Timestamp_Status(uint8_t *Status)
+{
+  if (lsm6dsox_timestamp_get(&reg_ctx, Status) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  return LSM6DSOX_OK;
+}
+
+/**
+ * @brief  Set the LSM6DSOX timestamp enable status
+ * @param  Status Timestamp enable status
+ * @retval 0 in case of success, an error code otherwise
+ */
+LSM6DSOXStatusTypeDef LSM6DSOXSensor::Set_Timestamp_Status(uint8_t Status)
+{
+  if (lsm6dsox_timestamp_set(&reg_ctx, Status) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  return LSM6DSOX_OK;
+}
+
+/**
+ * @brief  Set the LSM6DSOX FIFO timestamp decimation
+ * @param  Decimation FIFO timestamp decimation
+ * @retval 0 in case of success, an error code otherwise
+ */
+LSM6DSOXStatusTypeDef LSM6DSOXSensor::Set_FIFO_Timestamp_Decimation(uint8_t Decimation)
+{
+  LSM6DSOXStatusTypeDef ret = LSM6DSOX_OK;
+
+  /* Verify that the passed parameter contains one of the valid values. */
+  switch ((lsm6dsox_odr_ts_batch_t)Decimation)
+  {
+    case LSM6DSOX_NO_DECIMATION:
+    case LSM6DSOX_DEC_1:
+    case LSM6DSOX_DEC_8:
+    case LSM6DSOX_DEC_32:
+      break;
+
+    default:
+      ret = LSM6DSOX_ERROR;
+      break;
+  }
+
+  if (ret == LSM6DSOX_ERROR)
+  {
+    return ret;
+  }
+
+  if (lsm6dsox_fifo_timestamp_decimation_set(&reg_ctx, (lsm6dsox_odr_ts_batch_t)Decimation) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  return ret;
 }
 
 int32_t LSM6DSOX_io_write(void *handle, uint8_t WriteAddr, uint8_t *pBuffer, uint16_t nBytesToWrite)
