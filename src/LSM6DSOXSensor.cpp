@@ -3252,6 +3252,66 @@ LSM6DSOXStatusTypeDef LSM6DSOXSensor::Set_FIFO_Timestamp_Decimation(uint8_t Deci
   return ret;
 }
 
+/**
+ * @brief  Set the LSM6DSOX FIFO compression initialization status
+ * @param  Status FIFO compression initialization status
+ * @retval 0 in case of success, an error code otherwise
+ */
+LSM6DSOXStatusTypeDef LSM6DSOXSensor::Set_FIFO_Compression_Algo_Init(uint8_t Status)
+{
+  if (lsm6dsox_compression_algo_init_set(&reg_ctx, Status) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  return LSM6DSOX_OK;
+}
+
+/**
+ * @brief  Set the LSM6DSOX FIFO compression enable status
+ * @param  Status FIFO compression enable status
+ * @retval 0 in case of success, an error code otherwise
+ */
+LSM6DSOXStatusTypeDef LSM6DSOXSensor::Set_FIFO_Compression_Algo_Enable(uint8_t Status)
+{
+  if (lsm6dsox_compression_algo_enable_set(&reg_ctx, Status) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  return LSM6DSOX_OK;
+}
+
+/**
+ * @brief  Set the LSM6DSOX FIFO compression configuration and enable status
+ * @param  Compression FIFO compression and enable status
+ * @retval 0 in case of success, an error code otherwise
+ */
+LSM6DSOXStatusTypeDef LSM6DSOXSensor::Set_FIFO_Compression_Algo_Set(uint8_t Compression)
+{
+  if (lsm6dsox_compression_algo_set(&reg_ctx, (lsm6dsox_uncoptr_rate_t)Compression) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  return LSM6DSOX_OK;
+}
+
+/**
+ * @brief  Set the LSM6DSOX FIFO compression real time enable status
+ * @param  Status FIFO compression real time enable status
+ * @retval 0 in case of success, an error code otherwise
+ */
+LSM6DSOXStatusTypeDef LSM6DSOXSensor::Set_FIFO_Compression_Algo_Real_Time_Set(uint8_t Status)
+{
+  if (lsm6dsox_compression_algo_real_time_set(&reg_ctx, Status) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  return LSM6DSOX_OK;
+}
+
 int32_t LSM6DSOX_io_write(void *handle, uint8_t WriteAddr, uint8_t *pBuffer, uint16_t nBytesToWrite)
 {
   return ((LSM6DSOXSensor *)handle)->IO_Write(pBuffer, WriteAddr, nBytesToWrite);
