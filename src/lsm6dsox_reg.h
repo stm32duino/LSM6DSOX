@@ -2402,7 +2402,6 @@ int32_t lsm6dsox_fifo_watermark_get(lsm6dsox_ctx_t *ctx, uint16_t *val);
 int32_t lsm6dsox_compression_algo_init_set(lsm6dsox_ctx_t *ctx, uint8_t val);
 int32_t lsm6dsox_compression_algo_init_get(lsm6dsox_ctx_t *ctx, uint8_t *val);
 
-int32_t lsm6dsox_compression_algo_enable_set(lsm6dsox_ctx_t *ctx, uint8_t val);
 typedef enum {
   LSM6DSOX_CMP_DISABLE  = 0x00,
   LSM6DSOX_CMP_ALWAYS   = 0x04,

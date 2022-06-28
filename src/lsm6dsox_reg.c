@@ -5355,34 +5355,6 @@ int32_t lsm6dsox_compression_algo_init_get(lsm6dsox_ctx_t *ctx, uint8_t *val)
 }
 
 /**
-  * @brief  FIFO compression feature enable [set].
-  *
-  * @param  ctx       read / write interface definitions
-  * @param  val       change the values of FIFO_COMPR_EN in
-  *                   reg EMB_FUNC_EN_B
-  *
-  */
-int32_t lsm6dsox_compression_algo_enable_set(lsm6dsox_ctx_t *ctx, uint8_t val)
-{
-  lsm6dsox_emb_func_en_b_t reg;
-  int32_t ret;
-
-  ret = lsm6dsox_mem_bank_set(ctx, LSM6DSOX_EMBEDDED_FUNC_BANK);
-  if (ret == 0) {
-    ret = lsm6dsox_read_reg(ctx, LSM6DSOX_EMB_FUNC_EN_B, (uint8_t*)&reg, 1);
-  }
-  if (ret == 0) {
-    reg.fifo_compr_en = val;
-    ret = lsm6dsox_write_reg(ctx, LSM6DSOX_EMB_FUNC_EN_B, (uint8_t*)&reg, 1);
-  }
-  if (ret == 0) {
-    ret = lsm6dsox_mem_bank_set(ctx, LSM6DSOX_USER_BANK);
-  }
-
-  return ret;
-}
-
-/**
   * @brief  Enable and configure compression algo.[set]
   *
   * @param  ctx      read / write interface definitions

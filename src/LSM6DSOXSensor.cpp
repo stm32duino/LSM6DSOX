@@ -3274,7 +3274,15 @@ LSM6DSOXStatusTypeDef LSM6DSOXSensor::Set_FIFO_Compression_Algo_Init(uint8_t Sta
  */
 LSM6DSOXStatusTypeDef LSM6DSOXSensor::Set_FIFO_Compression_Algo_Enable(uint8_t Status)
 {
-  if (lsm6dsox_compression_algo_enable_set(&reg_ctx, Status) != LSM6DSOX_OK)
+  lsm6dsox_emb_sens_t val;
+  if (lsm6dsox_embedded_sens_get(&reg_ctx, &val) != LSM6DSOX_OK)
+  {
+    return LSM6DSOX_ERROR;
+  }
+
+  val.fifo_compr = Status;
+
+  if (lsm6dsox_embedded_sens_set(&reg_ctx, &val) != LSM6DSOX_OK)
   {
     return LSM6DSOX_ERROR;
   }
@@ -3289,12 +3297,35 @@ LSM6DSOXStatusTypeDef LSM6DSOXSensor::Set_FIFO_Compression_Algo_Enable(uint8_t S
  */
 LSM6DSOXStatusTypeDef LSM6DSOXSensor::Set_FIFO_Compression_Algo_Set(uint8_t Compression)
 {
+  LSM6DSOXStatusTypeDef ret = LSM6DSOX_OK;
+
+  /* Verify that the passed parameter contains one of the valid values. */
+  switch ((lsm6dsox_uncoptr_rate_t)Compression)
+  {
+    case LSM6DSOX_CMP_DISABLE:
+    case LSM6DSOX_CMP_ALWAYS:
+    case LSM6DSOX_CMP_8_TO_1:
+    case LSM6DSOX_CMP_16_TO_1:
+    case LSM6DSOX_CMP_32_TO_1:
+      break;
+
+    default:
+      ret = LSM6DSOX_ERROR;
+      break;
+  }
+
+
+  if (ret == LSM6DSOX_ERROR)
+  {
+    return ret;
+  }
+
   if (lsm6dsox_compression_algo_set(&reg_ctx, (lsm6dsox_uncoptr_rate_t)Compression) != LSM6DSOX_OK)
   {
     return LSM6DSOX_ERROR;
   }
 
-  return LSM6DSOX_OK;
+  return ret;
 }
 
 /**
