@@ -227,6 +227,14 @@ class LSM6DSOXSensor
 
     LSM6DSOXStatusTypeDef Set_FIFO_Timestamp_Decimation(uint8_t Decimation);
 
+    LSM6DSOXStatusTypeDef Set_FIFO_Compression_Algo_Init(uint8_t Status);
+
+    LSM6DSOXStatusTypeDef Set_FIFO_Compression_Algo_Enable(uint8_t Status);
+
+    LSM6DSOXStatusTypeDef Set_FIFO_Compression_Algo_Set(uint8_t Compression);
+
+    LSM6DSOXStatusTypeDef Set_FIFO_Compression_Algo_Real_Time_Set(uint8_t Status);
+
     /**
      * @brief Utility function to read data.
      * @param  pBuffer: pointer to data to be read.
