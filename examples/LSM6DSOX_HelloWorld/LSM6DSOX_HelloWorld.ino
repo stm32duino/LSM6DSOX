@@ -55,7 +55,7 @@ void setup() {
   lsm6dsoxSensor.begin();
 
   // Enable accelerometer and gyroscope, and check success
-  if (lsm6dsoxSensor.Enable_X() == LSM6DSOX_OK && lsm6dsoxSensor.Enable_X() == LSM6DSOX_OK) {
+  if (lsm6dsoxSensor.Enable_X() == LSM6DSOX_OK && lsm6dsoxSensor.Enable_G() == LSM6DSOX_OK) {
     Serial.println("Success enabling accelero and gyro");
   } else {
     Serial.println("Error enabling accelero and gyro");
@@ -95,7 +95,7 @@ void loop() {
   if (acceleroStatus == 1) { // Status == 1 means a new data is available
     int32_t acceleration[3];
     lsm6dsoxSensor.Get_X_Axes(acceleration);
-    // Plot data for each axe in mg
+    // Plot data for each axis in mg
     Serial.print("AccelerationX="); Serial.print(acceleration[0]); Serial.print("mg, AccelerationY="); Serial.print(acceleration[1]); Serial.print("mg, AccelerationZ="); Serial.print(acceleration[2]); Serial.println("mg");
   }
 
@@ -104,8 +104,8 @@ void loop() {
   lsm6dsoxSensor.Get_G_DRDY_Status(&gyroStatus);
   if (gyroStatus == 1) { // Status == 1 means a new data is available
     int32_t rotation[3];
-    lsm6dsoxSensor.Get_X_Axes(rotation);
-    // Plot data for each axe in milli degres per second
+    lsm6dsoxSensor.Get_G_Axes(rotation);
+    // Plot data for each axis in milli degrees per second
     Serial.print("RotationX="); Serial.print(rotation[0]); Serial.print("mdps, RotationY="); Serial.print(rotation[1]); Serial.print("mdps, RotationZ="); Serial.print(rotation[2]); Serial.println("mdps");
   }
 
