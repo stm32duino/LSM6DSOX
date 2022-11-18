@@ -44,8 +44,8 @@
 
 #include "LSM6DSOXSensor.h"
 
-#define SR 417 // Sample rate. Options are: 12.5, 26, 52, 104, 208, 417, 833, 1667, 3333 and 6667 Hz.
-#define WTM_LV 500 // Watermark threshold level. Max samples in this FIFO configuration is 512 (accel and gyro only).
+#define SR 104 // Sample rate. Options are: 12.5, 26, 52, 104, 208, 417, 833, 1667, 3333 and 6667 Hz.
+#define WTM_LV 199 // Watermark threshold level. Max samples in this FIFO configuration is 512 (accel and gyro only).
 
 /** LSM6DSOX i2c address:
  * LSM6DSOX_I2C_ADD_L: 0x6A (default)
@@ -55,7 +55,7 @@ LSM6DSOXSensor lsm6dsoxSensor = LSM6DSOXSensor(&Wire, LSM6DSOX_I2C_ADD_L);
 
 void setup() {
 
-  Serial.begin(115200);
+  Serial.begin(921600);
   // Comment this line to skip waiting for serial:
   while(!Serial) delay(10);
   
@@ -127,12 +127,14 @@ void loop() {
   // Get number of samples in buffer
   lsm6dsoxSensor.Get_FIFO_Num_Samples(&numSamples);
   Serial.print("Samples in FIFO: "); Serial.println(numSamples);
+  Serial.flush();
 
   // Check if FIFO threshold level was reached.
   lsm6dsoxSensor.Get_FIFO_Watermark_Status(&wtmStatus);
 
   if (wtmStatus != 0) {
     Serial.println("-- FIFO Watermark level reached!, fetching data.");
+    Serial.flush();
 
     // fetch data from FIFO
     for (uint16_t i = 0; i < WTM_LV; i++) {
@@ -142,22 +144,24 @@ void loop() {
       // Get gyroscope data
       if (Tag == 1) { 
         lsm6dsoxSensor.Get_FIFO_G_Axes(rotation);
-        #if 0 // set to 1 for printing values
+        #if 1 // set to 1 for printing values
         Serial.print("mdps: "); Serial.print(rotation[0]); 
         Serial.print(", "); Serial.print(rotation[1]); 
         Serial.print(", "); Serial.print(rotation[2]); 
         Serial.println();
+        Serial.flush();
         #endif
       } 
       
       // Get accelerometer data
       else if (Tag == 2) {
         lsm6dsoxSensor.Get_FIFO_X_Axes(acceleration); 
-        #if 0 // set to 1 for printing values
+        #if 1 // set to 1 for printing values
         Serial.print("mG: "); Serial.print(acceleration[0]); 
         Serial.print(", "); Serial.print(acceleration[1]); 
         Serial.print(", "); Serial.print(acceleration[2]); 
         Serial.println();
+        Serial.flush();
         #endif
       }
     }
@@ -168,6 +172,7 @@ void loop() {
 
   if (fullStatus != 0) {
     Serial.println("-- FIFO is full!, consider reducing Watermark Level or Buffer Data Rate.\nFlushing data from FIFO.");
+    Serial.flush();
     lsm6dsoxSensor.Set_FIFO_Mode(LSM6DSOX_BYPASS_MODE); // flush FIFO data
     lsm6dsoxSensor.Set_FIFO_Mode(LSM6DSOX_STREAM_MODE); // continue batching
   }
