@@ -45,8 +45,8 @@
 
 #include "LSM6DSOXSensor.h"
 
-#define SR 417.0f // Sample rate. Options are: 12.5, 26, 52, 104, 208, 417, 833, 1667, 3333 and 6667 Hz
-#define WTM_LV 102 // Watermark threshold level. Max samples in this FIFO configuration is 512 (accel and gyro only).
+#define SR 104.0f // Sample rate. Options are: 12.5, 26, 52, 104, 208, 417, 833, 1667, 3333 and 6667 Hz
+#define WTM_LV 199 // Watermark threshold level. Max samples in this FIFO configuration is 512 (accel and gyro only).
 
 // Define interrupt pins according to MCU board and sensor wiring.
 #define INT1_pin A0 // MCU input pin connected to sensor INT1 output pin
@@ -150,6 +150,7 @@ void loop() {
   lsm6dsoxSensor.Get_FIFO_Num_Samples(&numSamples);
   Serial.print("Samples in FIFO: ");
   Serial.println(numSamples);
+  Serial.flush();
 
   // Check if FIFO threshold level was reached.
   if (fullFlag != 0) {
@@ -159,11 +160,13 @@ void loop() {
 
     if(fullStatus) {
       Serial.println("-- FIFO Watermark level reached!, fetching data.");
+      Serial.flush();
 
       lsm6dsoxSensor.Get_FIFO_Num_Samples(&numSamples);
 
       Serial.print("numSamples=");
       Serial.println(numSamples);
+      Serial.flush();
 
       // fetch data from FIFO
       for (uint16_t i = 0; i < numSamples; i++) {
@@ -179,6 +182,7 @@ void loop() {
           Serial.print(", "); Serial.print(rotation[1]); 
           Serial.print(", "); Serial.print(rotation[2]); 
           Serial.println();
+          Serial.flush();
           #endif
         } 
       
@@ -191,6 +195,7 @@ void loop() {
           Serial.print(", "); Serial.print(acceleration[1]); 
           Serial.print(", "); Serial.print(acceleration[2]); 
           Serial.println();
+          Serial.flush();
           #endif
         }
 
@@ -206,6 +211,7 @@ void loop() {
       Serial.println(count_gyro_samples);
       Serial.print("Dummy Samples: ");
       Serial.println(count_dummy_samples);
+      Serial.flush();
     }
   }
 }
