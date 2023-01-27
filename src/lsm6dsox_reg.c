@@ -9638,20 +9638,18 @@ int32_t lsm6dsox_interrupt_mode_get(lsm6dsox_ctx_t *ctx,
 
   ret = lsm6dsox_read_reg(ctx, LSM6DSOX_CTRL3_C, (uint8_t*)&ctrl3_c, 1);
   if (ret == 0) {
-    ctrl3_c.h_lactive = val->active_low;
+    val->active_low = ctrl3_c.h_lactive;
     ret = lsm6dsox_read_reg(ctx, LSM6DSOX_TAP_CFG0, (uint8_t*) &tap_cfg0, 1);
   }
   if (ret == 0) {
-    tap_cfg0.lir = val->base_latched;
-    tap_cfg0.int_clr_on_read = val->base_latched | val->emb_latched;
+    val->base_latched = (tap_cfg0.lir && tap_cfg0.int_clr_on_read);
     ret = lsm6dsox_mem_bank_set(ctx, LSM6DSOX_EMBEDDED_FUNC_BANK);
   }
   if (ret == 0) {
     ret = lsm6dsox_read_reg(ctx, LSM6DSOX_PAGE_RW, (uint8_t*) &page_rw, 1);
   }
   if (ret == 0) {
-    page_rw.emb_func_lir = val->emb_latched;
-    ret = lsm6dsox_write_reg(ctx, LSM6DSOX_PAGE_RW, (uint8_t*) &page_rw, 1);
+    val->emb_latched = (page_rw.emb_func_lir && tap_cfg0.int_clr_on_read);
   }
   if (ret == 0) {
     ret = lsm6dsox_mem_bank_set(ctx, LSM6DSOX_USER_BANK);
