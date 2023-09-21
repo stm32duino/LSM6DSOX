@@ -10504,6 +10504,7 @@ int32_t lsm6dsox_mode_set(lsm6dsox_ctx_t *ctx, lsm6dsox_ctx_t *aux_ctx,
   /* FIXME: Remove warnings with STM32CubeIDE */
   ctrl3_c.not_used_01 = 0;
   ctrl4_c.not_used_01 = 0;
+  spi2_ctrl2_ois.not_used_01 = 0;
 
   /* reading input configuration */
   xl_hm_mode = ( (uint8_t)val->ui.xl.odr & 0x10U ) >> 4;
