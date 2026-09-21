@@ -1,0 +1,26 @@
+{
+  "cores": [
+    {
+      "maintainer": "STMicroelectronics",
+      "architecture": "stm32",
+      "boards": [
+      ],
+      "sketches": [
+        {
+          "pattern": "[^I][^3][^C]",
+          "applicable": true,
+          "boards": [
+            "NUCLEO_L476RG",
+            "NUCLEO_H503RB",
+            "NUCLEO_C562RE"
+          ]
+        },
+        {
+          "pattern": "I3C",
+          "applicable": true,
+          "boards": [ "NUCLEO_H503RB","NUCLEO_C562RE"]
+        }
+      ]
+    }
+  ]
+}
