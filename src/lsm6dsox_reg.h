@@ -23,7 +23,7 @@
 #define LSM6DSOX_REGS_H
 
 #ifdef __cplusplus
-  extern "C" {
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
@@ -57,23 +57,23 @@
   */
 
 typedef union {
-    int16_t i16bit[3];
-    uint8_t u8bit[6];
+  int16_t i16bit[3];
+  uint8_t u8bit[6];
 } axis3bit16_t;
 
 typedef union {
-    int16_t i16bit;
-    uint8_t u8bit[2];
+  int16_t i16bit;
+  uint8_t u8bit[2];
 } axis1bit16_t;
 
 typedef union {
-    int32_t i32bit[3];
-    uint8_t u8bit[12];
+  int32_t i32bit[3];
+  uint8_t u8bit[12];
 } axis3bit32_t;
 
 typedef union {
-    int32_t i32bit;
-    uint8_t u8bit[4];
+  int32_t i32bit;
+  uint8_t u8bit[4];
 } axis1bit32_t;
 
 /**
@@ -82,14 +82,14 @@ typedef union {
   */
 
 typedef struct {
-    uint8_t bit0       : 1;
-    uint8_t bit1       : 1;
-    uint8_t bit2       : 1;
-    uint8_t bit3       : 1;
-    uint8_t bit4       : 1;
-    uint8_t bit5       : 1;
-    uint8_t bit6       : 1;
-    uint8_t bit7       : 1;
+  uint8_t bit0       : 1;
+  uint8_t bit1       : 1;
+  uint8_t bit2       : 1;
+  uint8_t bit3       : 1;
+  uint8_t bit4       : 1;
+  uint8_t bit5       : 1;
+  uint8_t bit6       : 1;
+  uint8_t bit7       : 1;
 } bitwise_t;
 
 #define PROPERTY_DISABLE                (0U)
@@ -140,11 +140,11 @@ typedef int32_t (*lsm6dsox_write_ptr)(void *, uint8_t, uint8_t *, uint16_t);
 typedef int32_t (*lsm6dsox_read_ptr)(void *, uint8_t, uint8_t *, uint16_t);
 
 typedef struct {
-    /** Component mandatory fields **/
-    lsm6dsox_write_ptr  write_reg;
-    lsm6dsox_read_ptr   read_reg;
-    /** Customizable optional pointer **/
-    void *handle;
+  /** Component mandatory fields **/
+  lsm6dsox_write_ptr  write_reg;
+  lsm6dsox_read_ptr   read_reg;
+  /** Customizable optional pointer **/
+  void *handle;
 } lsm6dsox_ctx_t;
 
 /**
@@ -1271,218 +1271,218 @@ typedef struct {
 
 #define LSM6DSOX_SENSOR_HUB_1                 0x02U
 typedef struct {
-   uint8_t bit0                    : 1;
-   uint8_t bit1                    : 1;
-   uint8_t bit2                    : 1;
-   uint8_t bit3                    : 1;
-   uint8_t bit4                    : 1;
-   uint8_t bit5                    : 1;
-   uint8_t bit6                    : 1;
-   uint8_t bit7                    : 1;
+  uint8_t bit0                    : 1;
+  uint8_t bit1                    : 1;
+  uint8_t bit2                    : 1;
+  uint8_t bit3                    : 1;
+  uint8_t bit4                    : 1;
+  uint8_t bit5                    : 1;
+  uint8_t bit6                    : 1;
+  uint8_t bit7                    : 1;
 } lsm6dsox_sensor_hub_1_t;
 
 #define LSM6DSOX_SENSOR_HUB_2                 0x03U
 typedef struct {
-   uint8_t bit0                    : 1;
-   uint8_t bit1                    : 1;
-   uint8_t bit2                    : 1;
-   uint8_t bit3                    : 1;
-   uint8_t bit4                    : 1;
-   uint8_t bit5                    : 1;
-   uint8_t bit6                    : 1;
-   uint8_t bit7                    : 1;
+  uint8_t bit0                    : 1;
+  uint8_t bit1                    : 1;
+  uint8_t bit2                    : 1;
+  uint8_t bit3                    : 1;
+  uint8_t bit4                    : 1;
+  uint8_t bit5                    : 1;
+  uint8_t bit6                    : 1;
+  uint8_t bit7                    : 1;
 } lsm6dsox_sensor_hub_2_t;
 
 #define LSM6DSOX_SENSOR_HUB_3                 0x04U
 typedef struct {
-   uint8_t bit0                    : 1;
-   uint8_t bit1                    : 1;
-   uint8_t bit2                    : 1;
-   uint8_t bit3                    : 1;
-   uint8_t bit4                    : 1;
-   uint8_t bit5                    : 1;
-   uint8_t bit6                    : 1;
-   uint8_t bit7                    : 1;
+  uint8_t bit0                    : 1;
+  uint8_t bit1                    : 1;
+  uint8_t bit2                    : 1;
+  uint8_t bit3                    : 1;
+  uint8_t bit4                    : 1;
+  uint8_t bit5                    : 1;
+  uint8_t bit6                    : 1;
+  uint8_t bit7                    : 1;
 } lsm6dsox_sensor_hub_3_t;
 
 #define LSM6DSOX_SENSOR_HUB_4                 0x05U
 typedef struct {
-   uint8_t bit0                    : 1;
-   uint8_t bit1                    : 1;
-   uint8_t bit2                    : 1;
-   uint8_t bit3                    : 1;
-   uint8_t bit4                    : 1;
-   uint8_t bit5                    : 1;
-   uint8_t bit6                    : 1;
-   uint8_t bit7                    : 1;
+  uint8_t bit0                    : 1;
+  uint8_t bit1                    : 1;
+  uint8_t bit2                    : 1;
+  uint8_t bit3                    : 1;
+  uint8_t bit4                    : 1;
+  uint8_t bit5                    : 1;
+  uint8_t bit6                    : 1;
+  uint8_t bit7                    : 1;
 } lsm6dsox_sensor_hub_4_t;
 
 #define LSM6DSOX_SENSOR_HUB_5                 0x06U
 typedef struct {
-   uint8_t bit0                    : 1;
-   uint8_t bit1                    : 1;
-   uint8_t bit2                    : 1;
-   uint8_t bit3                    : 1;
-   uint8_t bit4                    : 1;
-   uint8_t bit5                    : 1;
-   uint8_t bit6                    : 1;
-   uint8_t bit7                    : 1;
+  uint8_t bit0                    : 1;
+  uint8_t bit1                    : 1;
+  uint8_t bit2                    : 1;
+  uint8_t bit3                    : 1;
+  uint8_t bit4                    : 1;
+  uint8_t bit5                    : 1;
+  uint8_t bit6                    : 1;
+  uint8_t bit7                    : 1;
 } lsm6dsox_sensor_hub_5_t;
 
 #define LSM6DSOX_SENSOR_HUB_6                 0x07U
 typedef struct {
-   uint8_t bit0                    : 1;
-   uint8_t bit1                    : 1;
-   uint8_t bit2                    : 1;
-   uint8_t bit3                    : 1;
-   uint8_t bit4                    : 1;
-   uint8_t bit5                    : 1;
-   uint8_t bit6                    : 1;
-   uint8_t bit7                    : 1;
+  uint8_t bit0                    : 1;
+  uint8_t bit1                    : 1;
+  uint8_t bit2                    : 1;
+  uint8_t bit3                    : 1;
+  uint8_t bit4                    : 1;
+  uint8_t bit5                    : 1;
+  uint8_t bit6                    : 1;
+  uint8_t bit7                    : 1;
 } lsm6dsox_sensor_hub_6_t;
 
 #define LSM6DSOX_SENSOR_HUB_7                 0x08U
 typedef struct {
-   uint8_t bit0                    : 1;
-   uint8_t bit1                    : 1;
-   uint8_t bit2                    : 1;
-   uint8_t bit3                    : 1;
-   uint8_t bit4                    : 1;
-   uint8_t bit5                    : 1;
-   uint8_t bit6                    : 1;
-   uint8_t bit7                    : 1;
+  uint8_t bit0                    : 1;
+  uint8_t bit1                    : 1;
+  uint8_t bit2                    : 1;
+  uint8_t bit3                    : 1;
+  uint8_t bit4                    : 1;
+  uint8_t bit5                    : 1;
+  uint8_t bit6                    : 1;
+  uint8_t bit7                    : 1;
 } lsm6dsox_sensor_hub_7_t;
 
 #define LSM6DSOX_SENSOR_HUB_8                 0x09U
 typedef struct {
-   uint8_t bit0                    : 1;
-   uint8_t bit1                    : 1;
-   uint8_t bit2                    : 1;
-   uint8_t bit3                    : 1;
-   uint8_t bit4                    : 1;
-   uint8_t bit5                    : 1;
-   uint8_t bit6                    : 1;
-   uint8_t bit7                    : 1;
+  uint8_t bit0                    : 1;
+  uint8_t bit1                    : 1;
+  uint8_t bit2                    : 1;
+  uint8_t bit3                    : 1;
+  uint8_t bit4                    : 1;
+  uint8_t bit5                    : 1;
+  uint8_t bit6                    : 1;
+  uint8_t bit7                    : 1;
 } lsm6dsox_sensor_hub_8_t;
 
 #define LSM6DSOX_SENSOR_HUB_9                 0x0AU
 typedef struct {
-   uint8_t bit0                    : 1;
-   uint8_t bit1                    : 1;
-   uint8_t bit2                    : 1;
-   uint8_t bit3                    : 1;
-   uint8_t bit4                    : 1;
-   uint8_t bit5                    : 1;
-   uint8_t bit6                    : 1;
-   uint8_t bit7                    : 1;
+  uint8_t bit0                    : 1;
+  uint8_t bit1                    : 1;
+  uint8_t bit2                    : 1;
+  uint8_t bit3                    : 1;
+  uint8_t bit4                    : 1;
+  uint8_t bit5                    : 1;
+  uint8_t bit6                    : 1;
+  uint8_t bit7                    : 1;
 } lsm6dsox_sensor_hub_9_t;
 
 #define LSM6DSOX_SENSOR_HUB_10                0x0BU
 typedef struct {
-   uint8_t bit0                    : 1;
-   uint8_t bit1                    : 1;
-   uint8_t bit2                    : 1;
-   uint8_t bit3                    : 1;
-   uint8_t bit4                    : 1;
-   uint8_t bit5                    : 1;
-   uint8_t bit6                    : 1;
-   uint8_t bit7                    : 1;
+  uint8_t bit0                    : 1;
+  uint8_t bit1                    : 1;
+  uint8_t bit2                    : 1;
+  uint8_t bit3                    : 1;
+  uint8_t bit4                    : 1;
+  uint8_t bit5                    : 1;
+  uint8_t bit6                    : 1;
+  uint8_t bit7                    : 1;
 } lsm6dsox_sensor_hub_10_t;
 
 #define LSM6DSOX_SENSOR_HUB_11                0x0CU
 typedef struct {
-   uint8_t bit0                    : 1;
-   uint8_t bit1                    : 1;
-   uint8_t bit2                    : 1;
-   uint8_t bit3                    : 1;
-   uint8_t bit4                    : 1;
-   uint8_t bit5                    : 1;
-   uint8_t bit6                    : 1;
-   uint8_t bit7                    : 1;
+  uint8_t bit0                    : 1;
+  uint8_t bit1                    : 1;
+  uint8_t bit2                    : 1;
+  uint8_t bit3                    : 1;
+  uint8_t bit4                    : 1;
+  uint8_t bit5                    : 1;
+  uint8_t bit6                    : 1;
+  uint8_t bit7                    : 1;
 } lsm6dsox_sensor_hub_11_t;
 
 #define LSM6DSOX_SENSOR_HUB_12                0x0DU
 typedef struct {
-   uint8_t bit0                    : 1;
-   uint8_t bit1                    : 1;
-   uint8_t bit2                    : 1;
-   uint8_t bit3                    : 1;
-   uint8_t bit4                    : 1;
-   uint8_t bit5                    : 1;
-   uint8_t bit6                    : 1;
-   uint8_t bit7                    : 1;
+  uint8_t bit0                    : 1;
+  uint8_t bit1                    : 1;
+  uint8_t bit2                    : 1;
+  uint8_t bit3                    : 1;
+  uint8_t bit4                    : 1;
+  uint8_t bit5                    : 1;
+  uint8_t bit6                    : 1;
+  uint8_t bit7                    : 1;
 } lsm6dsox_sensor_hub_12_t;
 
 #define LSM6DSOX_SENSOR_HUB_13                0x0EU
 typedef struct {
-   uint8_t bit0                    : 1;
-   uint8_t bit1                    : 1;
-   uint8_t bit2                    : 1;
-   uint8_t bit3                    : 1;
-   uint8_t bit4                    : 1;
-   uint8_t bit5                    : 1;
-   uint8_t bit6                    : 1;
-   uint8_t bit7                    : 1;
+  uint8_t bit0                    : 1;
+  uint8_t bit1                    : 1;
+  uint8_t bit2                    : 1;
+  uint8_t bit3                    : 1;
+  uint8_t bit4                    : 1;
+  uint8_t bit5                    : 1;
+  uint8_t bit6                    : 1;
+  uint8_t bit7                    : 1;
 } lsm6dsox_sensor_hub_13_t;
 
 #define LSM6DSOX_SENSOR_HUB_14                0x0FU
 typedef struct {
-   uint8_t bit0                    : 1;
-   uint8_t bit1                    : 1;
-   uint8_t bit2                    : 1;
-   uint8_t bit3                    : 1;
-   uint8_t bit4                    : 1;
-   uint8_t bit5                    : 1;
-   uint8_t bit6                    : 1;
-   uint8_t bit7                    : 1;
+  uint8_t bit0                    : 1;
+  uint8_t bit1                    : 1;
+  uint8_t bit2                    : 1;
+  uint8_t bit3                    : 1;
+  uint8_t bit4                    : 1;
+  uint8_t bit5                    : 1;
+  uint8_t bit6                    : 1;
+  uint8_t bit7                    : 1;
 } lsm6dsox_sensor_hub_14_t;
 
 #define LSM6DSOX_SENSOR_HUB_15                0x10U
 typedef struct {
-   uint8_t bit0                    : 1;
-   uint8_t bit1                    : 1;
-   uint8_t bit2                    : 1;
-   uint8_t bit3                    : 1;
-   uint8_t bit4                    : 1;
-   uint8_t bit5                    : 1;
-   uint8_t bit6                    : 1;
-   uint8_t bit7                    : 1;
+  uint8_t bit0                    : 1;
+  uint8_t bit1                    : 1;
+  uint8_t bit2                    : 1;
+  uint8_t bit3                    : 1;
+  uint8_t bit4                    : 1;
+  uint8_t bit5                    : 1;
+  uint8_t bit6                    : 1;
+  uint8_t bit7                    : 1;
 } lsm6dsox_sensor_hub_15_t;
 
 #define LSM6DSOX_SENSOR_HUB_16                0x11U
 typedef struct {
-   uint8_t bit0                    : 1;
-   uint8_t bit1                    : 1;
-   uint8_t bit2                    : 1;
-   uint8_t bit3                    : 1;
-   uint8_t bit4                    : 1;
-   uint8_t bit5                    : 1;
-   uint8_t bit6                    : 1;
-   uint8_t bit7                    : 1;
+  uint8_t bit0                    : 1;
+  uint8_t bit1                    : 1;
+  uint8_t bit2                    : 1;
+  uint8_t bit3                    : 1;
+  uint8_t bit4                    : 1;
+  uint8_t bit5                    : 1;
+  uint8_t bit6                    : 1;
+  uint8_t bit7                    : 1;
 } lsm6dsox_sensor_hub_16_t;
 
 #define LSM6DSOX_SENSOR_HUB_17                0x12U
 typedef struct {
-   uint8_t bit0                    : 1;
-   uint8_t bit1                    : 1;
-   uint8_t bit2                    : 1;
-   uint8_t bit3                    : 1;
-   uint8_t bit4                    : 1;
-   uint8_t bit5                    : 1;
-   uint8_t bit6                    : 1;
-   uint8_t bit7                    : 1;
+  uint8_t bit0                    : 1;
+  uint8_t bit1                    : 1;
+  uint8_t bit2                    : 1;
+  uint8_t bit3                    : 1;
+  uint8_t bit4                    : 1;
+  uint8_t bit5                    : 1;
+  uint8_t bit6                    : 1;
+  uint8_t bit7                    : 1;
 } lsm6dsox_sensor_hub_17_t;
 
 #define LSM6DSOX_SENSOR_HUB_18                0x13U
 typedef struct {
-   uint8_t bit0                    : 1;
-   uint8_t bit1                    : 1;
-   uint8_t bit2                    : 1;
-   uint8_t bit3                    : 1;
-   uint8_t bit4                    : 1;
-   uint8_t bit5                    : 1;
-   uint8_t bit6                    : 1;
-   uint8_t bit7                    : 1;
+  uint8_t bit0                    : 1;
+  uint8_t bit1                    : 1;
+  uint8_t bit2                    : 1;
+  uint8_t bit3                    : 1;
+  uint8_t bit4                    : 1;
+  uint8_t bit5                    : 1;
+  uint8_t bit6                    : 1;
+  uint8_t bit7                    : 1;
 } lsm6dsox_sensor_hub_18_t;
 
 #define LSM6DSOX_MASTER_CONFIG                0x14U
@@ -1599,7 +1599,7 @@ typedef struct {
   * @{
   *
   */
-typedef union{
+typedef union {
   lsm6dsox_func_cfg_access_t               func_cfg_access;
   lsm6dsox_pin_ctrl_t                      pin_ctrl;
   lsm6dsox_s4s_tph_l_t                     s4s_tph_l;
@@ -1740,9 +1740,9 @@ typedef union{
   *
   */
 
-int32_t lsm6dsox_read_reg(lsm6dsox_ctx_t *ctx, uint8_t reg, uint8_t* data,
+int32_t lsm6dsox_read_reg(lsm6dsox_ctx_t *ctx, uint8_t reg, uint8_t *data,
                           uint16_t len);
-int32_t lsm6dsox_write_reg(lsm6dsox_ctx_t *ctx, uint8_t reg, uint8_t* data,
+int32_t lsm6dsox_write_reg(lsm6dsox_ctx_t *ctx, uint8_t reg, uint8_t *data,
                            uint16_t len);
 
 extern float_t lsm6dsox_from_fs2_to_mg(int16_t lsb);
@@ -2410,19 +2410,19 @@ typedef enum {
   LSM6DSOX_CMP_32_TO_1  = 0x07,
 } lsm6dsox_uncoptr_rate_t;
 int32_t lsm6dsox_compression_algo_set(lsm6dsox_ctx_t *ctx,
-                                     lsm6dsox_uncoptr_rate_t val);
+                                      lsm6dsox_uncoptr_rate_t val);
 int32_t lsm6dsox_compression_algo_get(lsm6dsox_ctx_t *ctx,
-                                     lsm6dsox_uncoptr_rate_t *val);
+                                      lsm6dsox_uncoptr_rate_t *val);
 
 int32_t lsm6dsox_fifo_virtual_sens_odr_chg_set(lsm6dsox_ctx_t *ctx,
-                                              uint8_t val);
+                                               uint8_t val);
 int32_t lsm6dsox_fifo_virtual_sens_odr_chg_get(lsm6dsox_ctx_t *ctx,
-                                              uint8_t *val);
+                                               uint8_t *val);
 
 int32_t lsm6dsox_compression_algo_real_time_set(lsm6dsox_ctx_t *ctx,
-                                               uint8_t val);
+                                                uint8_t val);
 int32_t lsm6dsox_compression_algo_real_time_get(lsm6dsox_ctx_t *ctx,
-                                               uint8_t *val);
+                                                uint8_t *val);
 
 int32_t lsm6dsox_fifo_stop_on_wtm_set(lsm6dsox_ctx_t *ctx, uint8_t val);
 int32_t lsm6dsox_fifo_stop_on_wtm_get(lsm6dsox_ctx_t *ctx, uint8_t *val);
@@ -2479,9 +2479,9 @@ typedef enum {
   LSM6DSOX_TEMP_BATCHED_AT_52Hz    = 3,
 } lsm6dsox_odr_t_batch_t;
 int32_t lsm6dsox_fifo_temp_batch_set(lsm6dsox_ctx_t *ctx,
-                                    lsm6dsox_odr_t_batch_t val);
+                                     lsm6dsox_odr_t_batch_t val);
 int32_t lsm6dsox_fifo_temp_batch_get(lsm6dsox_ctx_t *ctx,
-                                    lsm6dsox_odr_t_batch_t *val);
+                                     lsm6dsox_odr_t_batch_t *val);
 
 typedef enum {
   LSM6DSOX_NO_DECIMATION = 0,
@@ -2490,9 +2490,9 @@ typedef enum {
   LSM6DSOX_DEC_32        = 3,
 } lsm6dsox_odr_ts_batch_t;
 int32_t lsm6dsox_fifo_timestamp_decimation_set(lsm6dsox_ctx_t *ctx,
-                                              lsm6dsox_odr_ts_batch_t val);
+                                               lsm6dsox_odr_ts_batch_t val);
 int32_t lsm6dsox_fifo_timestamp_decimation_get(lsm6dsox_ctx_t *ctx,
-                                              lsm6dsox_odr_ts_batch_t *val);
+                                               lsm6dsox_odr_ts_batch_t *val);
 
 typedef enum {
   LSM6DSOX_XL_BATCH_EVENT   = 0,
@@ -2532,14 +2532,14 @@ int32_t lsm6dsox_rst_batch_counter_set(lsm6dsox_ctx_t *ctx, uint8_t val);
 int32_t lsm6dsox_rst_batch_counter_get(lsm6dsox_ctx_t *ctx, uint8_t *val);
 
 int32_t lsm6dsox_batch_counter_threshold_set(lsm6dsox_ctx_t *ctx,
-                                            uint16_t val);
+                                             uint16_t val);
 int32_t lsm6dsox_batch_counter_threshold_get(lsm6dsox_ctx_t *ctx,
-                                            uint16_t *val);
+                                             uint16_t *val);
 
 int32_t lsm6dsox_fifo_data_level_get(lsm6dsox_ctx_t *ctx, uint16_t *val);
 
 int32_t lsm6dsox_fifo_status_get(lsm6dsox_ctx_t *ctx,
-                                lsm6dsox_fifo_status2_t *val);
+                                 lsm6dsox_fifo_status2_t *val);
 
 int32_t lsm6dsox_fifo_full_flag_get(lsm6dsox_ctx_t *ctx, uint8_t *val);
 
@@ -2548,7 +2548,7 @@ int32_t lsm6dsox_fifo_ovr_flag_get(lsm6dsox_ctx_t *ctx, uint8_t *val);
 int32_t lsm6dsox_fifo_wtm_flag_get(lsm6dsox_ctx_t *ctx, uint8_t *val);
 
 int32_t lsm6dsox_fifo_sensor_tag_get(lsm6dsox_ctx_t *ctx,
-            lsm6dsox_fifo_tag_t *val);
+                                     lsm6dsox_fifo_tag_t *val);
 
 int32_t lsm6dsox_fifo_pedo_batch_set(lsm6dsox_ctx_t *ctx, uint8_t val);
 int32_t lsm6dsox_fifo_pedo_batch_get(lsm6dsox_ctx_t *ctx, uint8_t *val);
@@ -2610,9 +2610,9 @@ int32_t lsm6dsox_pedo_sens_get(lsm6dsox_ctx_t *ctx, lsm6dsox_pedo_md_t *val);
 int32_t lsm6dsox_pedo_step_detect_get(lsm6dsox_ctx_t *ctx, uint8_t *val);
 
 int32_t lsm6dsox_pedo_debounce_steps_set(lsm6dsox_ctx_t *ctx,
-                                             uint8_t *buff);
+                                         uint8_t *buff);
 int32_t lsm6dsox_pedo_debounce_steps_get(lsm6dsox_ctx_t *ctx,
-                                             uint8_t *buff);
+                                         uint8_t *buff);
 
 int32_t lsm6dsox_pedo_steps_period_set(lsm6dsox_ctx_t *ctx, uint8_t *buff);
 int32_t lsm6dsox_pedo_steps_period_get(lsm6dsox_ctx_t *ctx, uint8_t *buff);
@@ -2621,24 +2621,24 @@ int32_t lsm6dsox_pedo_adv_detection_set(lsm6dsox_ctx_t *ctx, uint8_t val);
 int32_t lsm6dsox_pedo_adv_detection_get(lsm6dsox_ctx_t *ctx, uint8_t *val);
 
 int32_t lsm6dsox_pedo_false_step_rejection_set(lsm6dsox_ctx_t *ctx,
-                                              uint8_t val);
+                                               uint8_t val);
 int32_t lsm6dsox_pedo_false_step_rejection_get(lsm6dsox_ctx_t *ctx,
-                                              uint8_t *val);
+                                               uint8_t *val);
 
 typedef enum {
   LSM6DSOX_EVERY_STEP     = 0,
   LSM6DSOX_COUNT_OVERFLOW = 1,
 } lsm6dsox_carry_count_en_t;
 int32_t lsm6dsox_pedo_int_mode_set(lsm6dsox_ctx_t *ctx,
-                                  lsm6dsox_carry_count_en_t val);
+                                   lsm6dsox_carry_count_en_t val);
 int32_t lsm6dsox_pedo_int_mode_get(lsm6dsox_ctx_t *ctx,
-                                  lsm6dsox_carry_count_en_t *val);
+                                   lsm6dsox_carry_count_en_t *val);
 
 int32_t lsm6dsox_motion_flag_data_ready_get(lsm6dsox_ctx_t *ctx,
-                                                uint8_t *val);
+                                            uint8_t *val);
 
 int32_t lsm6dsox_tilt_flag_data_ready_get(lsm6dsox_ctx_t *ctx,
-                                              uint8_t *val);
+                                          uint8_t *val);
 
 int32_t lsm6dsox_sh_mag_sensitivity_set(lsm6dsox_ctx_t *ctx, uint8_t *buff);
 int32_t lsm6dsox_sh_mag_sensitivity_get(lsm6dsox_ctx_t *ctx, uint8_t *buff);
@@ -2661,9 +2661,9 @@ typedef enum {
   LSM6DSOX_Z_EQ_Z     = 5,
 } lsm6dsox_mag_z_axis_t;
 int32_t lsm6dsox_mag_z_orient_set(lsm6dsox_ctx_t *ctx,
-                                         lsm6dsox_mag_z_axis_t val);
+                                  lsm6dsox_mag_z_axis_t val);
 int32_t lsm6dsox_mag_z_orient_get(lsm6dsox_ctx_t *ctx,
-                                         lsm6dsox_mag_z_axis_t *val);
+                                  lsm6dsox_mag_z_axis_t *val);
 
 typedef enum {
   LSM6DSOX_Y_EQ_Y     = 0,
@@ -2674,9 +2674,9 @@ typedef enum {
   LSM6DSOX_Y_EQ_Z     = 5,
 } lsm6dsox_mag_y_axis_t;
 int32_t lsm6dsox_mag_y_orient_set(lsm6dsox_ctx_t *ctx,
-                                         lsm6dsox_mag_y_axis_t val);
+                                  lsm6dsox_mag_y_axis_t val);
 int32_t lsm6dsox_mag_y_orient_get(lsm6dsox_ctx_t *ctx,
-                                         lsm6dsox_mag_y_axis_t *val);
+                                  lsm6dsox_mag_y_axis_t *val);
 
 typedef enum {
   LSM6DSOX_X_EQ_Y     = 0,
@@ -2687,21 +2687,21 @@ typedef enum {
   LSM6DSOX_X_EQ_Z     = 5,
 } lsm6dsox_mag_x_axis_t;
 int32_t lsm6dsox_mag_x_orient_set(lsm6dsox_ctx_t *ctx,
-                                         lsm6dsox_mag_x_axis_t val);
+                                  lsm6dsox_mag_x_axis_t val);
 int32_t lsm6dsox_mag_x_orient_get(lsm6dsox_ctx_t *ctx,
-                                         lsm6dsox_mag_x_axis_t *val);
+                                  lsm6dsox_mag_x_axis_t *val);
 
 int32_t lsm6dsox_long_cnt_flag_data_ready_get(lsm6dsox_ctx_t *ctx,
-                                             uint8_t *val);
+                                              uint8_t *val);
 
 typedef struct {
-    lsm6dsox_fsm_enable_a_t          fsm_enable_a;
-    lsm6dsox_fsm_enable_b_t          fsm_enable_b;
+  lsm6dsox_fsm_enable_a_t          fsm_enable_a;
+  lsm6dsox_fsm_enable_b_t          fsm_enable_b;
 } lsm6dsox_emb_fsm_enable_t;
 int32_t lsm6dsox_fsm_enable_set(lsm6dsox_ctx_t *ctx,
-                               lsm6dsox_emb_fsm_enable_t *val);
+                                lsm6dsox_emb_fsm_enable_t *val);
 int32_t lsm6dsox_fsm_enable_get(lsm6dsox_ctx_t *ctx,
-                               lsm6dsox_emb_fsm_enable_t *val);
+                                lsm6dsox_emb_fsm_enable_t *val);
 
 int32_t lsm6dsox_long_cnt_set(lsm6dsox_ctx_t *ctx, uint8_t *buff);
 int32_t lsm6dsox_long_cnt_get(lsm6dsox_ctx_t *ctx, uint8_t *buff);
@@ -2715,22 +2715,22 @@ int32_t lsm6dsox_long_clr_set(lsm6dsox_ctx_t *ctx, lsm6dsox_fsm_lc_clr_t val);
 int32_t lsm6dsox_long_clr_get(lsm6dsox_ctx_t *ctx, lsm6dsox_fsm_lc_clr_t *val);
 
 typedef struct {
-    lsm6dsox_fsm_outs1_t    fsm_outs1;
-    lsm6dsox_fsm_outs2_t    fsm_outs2;
-    lsm6dsox_fsm_outs3_t    fsm_outs3;
-    lsm6dsox_fsm_outs4_t    fsm_outs4;
-    lsm6dsox_fsm_outs5_t    fsm_outs5;
-    lsm6dsox_fsm_outs6_t    fsm_outs6;
-    lsm6dsox_fsm_outs7_t    fsm_outs7;
-    lsm6dsox_fsm_outs8_t    fsm_outs8;
-    lsm6dsox_fsm_outs1_t    fsm_outs9;
-    lsm6dsox_fsm_outs2_t    fsm_outs10;
-    lsm6dsox_fsm_outs3_t    fsm_outs11;
-    lsm6dsox_fsm_outs4_t    fsm_outs12;
-    lsm6dsox_fsm_outs5_t    fsm_outs13;
-    lsm6dsox_fsm_outs6_t    fsm_outs14;
-    lsm6dsox_fsm_outs7_t    fsm_outs15;
-    lsm6dsox_fsm_outs8_t    fsm_outs16;
+  lsm6dsox_fsm_outs1_t    fsm_outs1;
+  lsm6dsox_fsm_outs2_t    fsm_outs2;
+  lsm6dsox_fsm_outs3_t    fsm_outs3;
+  lsm6dsox_fsm_outs4_t    fsm_outs4;
+  lsm6dsox_fsm_outs5_t    fsm_outs5;
+  lsm6dsox_fsm_outs6_t    fsm_outs6;
+  lsm6dsox_fsm_outs7_t    fsm_outs7;
+  lsm6dsox_fsm_outs8_t    fsm_outs8;
+  lsm6dsox_fsm_outs1_t    fsm_outs9;
+  lsm6dsox_fsm_outs2_t    fsm_outs10;
+  lsm6dsox_fsm_outs3_t    fsm_outs11;
+  lsm6dsox_fsm_outs4_t    fsm_outs12;
+  lsm6dsox_fsm_outs5_t    fsm_outs13;
+  lsm6dsox_fsm_outs6_t    fsm_outs14;
+  lsm6dsox_fsm_outs7_t    fsm_outs15;
+  lsm6dsox_fsm_outs8_t    fsm_outs16;
 } lsm6dsox_fsm_out_t;
 int32_t lsm6dsox_fsm_out_get(lsm6dsox_ctx_t *ctx, lsm6dsox_fsm_out_t *val);
 
@@ -2770,28 +2770,28 @@ int32_t lsm6dsox_mlc_data_rate_get(lsm6dsox_ctx_t *ctx,
                                    lsm6dsox_mlc_odr_t *val);
 
 typedef struct {
-    lsm6dsox_sensor_hub_1_t   sh_byte_1;
-    lsm6dsox_sensor_hub_2_t   sh_byte_2;
-    lsm6dsox_sensor_hub_3_t   sh_byte_3;
-    lsm6dsox_sensor_hub_4_t   sh_byte_4;
-    lsm6dsox_sensor_hub_5_t   sh_byte_5;
-    lsm6dsox_sensor_hub_6_t   sh_byte_6;
-    lsm6dsox_sensor_hub_7_t   sh_byte_7;
-    lsm6dsox_sensor_hub_8_t   sh_byte_8;
-    lsm6dsox_sensor_hub_9_t   sh_byte_9;
-    lsm6dsox_sensor_hub_10_t  sh_byte_10;
-    lsm6dsox_sensor_hub_11_t  sh_byte_11;
-    lsm6dsox_sensor_hub_12_t  sh_byte_12;
-    lsm6dsox_sensor_hub_13_t  sh_byte_13;
-    lsm6dsox_sensor_hub_14_t  sh_byte_14;
-    lsm6dsox_sensor_hub_15_t  sh_byte_15;
-    lsm6dsox_sensor_hub_16_t  sh_byte_16;
-    lsm6dsox_sensor_hub_17_t  sh_byte_17;
-    lsm6dsox_sensor_hub_18_t  sh_byte_18;
+  lsm6dsox_sensor_hub_1_t   sh_byte_1;
+  lsm6dsox_sensor_hub_2_t   sh_byte_2;
+  lsm6dsox_sensor_hub_3_t   sh_byte_3;
+  lsm6dsox_sensor_hub_4_t   sh_byte_4;
+  lsm6dsox_sensor_hub_5_t   sh_byte_5;
+  lsm6dsox_sensor_hub_6_t   sh_byte_6;
+  lsm6dsox_sensor_hub_7_t   sh_byte_7;
+  lsm6dsox_sensor_hub_8_t   sh_byte_8;
+  lsm6dsox_sensor_hub_9_t   sh_byte_9;
+  lsm6dsox_sensor_hub_10_t  sh_byte_10;
+  lsm6dsox_sensor_hub_11_t  sh_byte_11;
+  lsm6dsox_sensor_hub_12_t  sh_byte_12;
+  lsm6dsox_sensor_hub_13_t  sh_byte_13;
+  lsm6dsox_sensor_hub_14_t  sh_byte_14;
+  lsm6dsox_sensor_hub_15_t  sh_byte_15;
+  lsm6dsox_sensor_hub_16_t  sh_byte_16;
+  lsm6dsox_sensor_hub_17_t  sh_byte_17;
+  lsm6dsox_sensor_hub_18_t  sh_byte_18;
 } lsm6dsox_emb_sh_read_t;
 int32_t lsm6dsox_sh_read_data_raw_get(lsm6dsox_ctx_t *ctx,
-                                     lsm6dsox_emb_sh_read_t *val,
-                                     uint8_t len);
+                                      lsm6dsox_emb_sh_read_t *val,
+                                      uint8_t len);
 
 typedef enum {
   LSM6DSOX_SLV_0       = 0,
@@ -2800,9 +2800,9 @@ typedef enum {
   LSM6DSOX_SLV_0_1_2_3 = 3,
 } lsm6dsox_aux_sens_on_t;
 int32_t lsm6dsox_sh_slave_connected_set(lsm6dsox_ctx_t *ctx,
-                                       lsm6dsox_aux_sens_on_t val);
+                                        lsm6dsox_aux_sens_on_t val);
 int32_t lsm6dsox_sh_slave_connected_get(lsm6dsox_ctx_t *ctx,
-                                       lsm6dsox_aux_sens_on_t *val);
+                                        lsm6dsox_aux_sens_on_t *val);
 
 int32_t lsm6dsox_sh_master_set(lsm6dsox_ctx_t *ctx, uint8_t val);
 int32_t lsm6dsox_sh_master_get(lsm6dsox_ctx_t *ctx, uint8_t *val);
@@ -2822,18 +2822,18 @@ typedef enum {
   LSM6DSOX_XL_GY_DRDY      = 0,
 } lsm6dsox_start_config_t;
 int32_t lsm6dsox_sh_syncro_mode_set(lsm6dsox_ctx_t *ctx,
-                                   lsm6dsox_start_config_t val);
+                                    lsm6dsox_start_config_t val);
 int32_t lsm6dsox_sh_syncro_mode_get(lsm6dsox_ctx_t *ctx,
-                                   lsm6dsox_start_config_t *val);
+                                    lsm6dsox_start_config_t *val);
 
 typedef enum {
   LSM6DSOX_EACH_SH_CYCLE    = 0,
   LSM6DSOX_ONLY_FIRST_CYCLE = 1,
 } lsm6dsox_write_once_t;
 int32_t lsm6dsox_sh_write_mode_set(lsm6dsox_ctx_t *ctx,
-                                  lsm6dsox_write_once_t val);
+                                   lsm6dsox_write_once_t val);
 int32_t lsm6dsox_sh_write_mode_get(lsm6dsox_ctx_t *ctx,
-                                  lsm6dsox_write_once_t *val);
+                                   lsm6dsox_write_once_t *val);
 
 int32_t lsm6dsox_sh_reset_set(lsm6dsox_ctx_t *ctx);
 int32_t lsm6dsox_sh_reset_get(lsm6dsox_ctx_t *ctx, uint8_t *val);
@@ -2847,37 +2847,37 @@ typedef enum {
 int32_t lsm6dsox_sh_data_rate_set(lsm6dsox_ctx_t *ctx, lsm6dsox_shub_odr_t val);
 int32_t lsm6dsox_sh_data_rate_get(lsm6dsox_ctx_t *ctx, lsm6dsox_shub_odr_t *val);
 
-typedef struct{
+typedef struct {
   uint8_t   slv0_add;
   uint8_t   slv0_subadd;
   uint8_t   slv0_data;
 } lsm6dsox_sh_cfg_write_t;
 int32_t lsm6dsox_sh_cfg_write(lsm6dsox_ctx_t *ctx, lsm6dsox_sh_cfg_write_t *val);
 
-typedef struct{
+typedef struct {
   uint8_t   slv_add;
   uint8_t   slv_subadd;
   uint8_t   slv_len;
 } lsm6dsox_sh_cfg_read_t;
 int32_t lsm6dsox_sh_slv0_cfg_read(lsm6dsox_ctx_t *ctx,
-                                 lsm6dsox_sh_cfg_read_t *val);
+                                  lsm6dsox_sh_cfg_read_t *val);
 int32_t lsm6dsox_sh_slv1_cfg_read(lsm6dsox_ctx_t *ctx,
-                                 lsm6dsox_sh_cfg_read_t *val);
+                                  lsm6dsox_sh_cfg_read_t *val);
 int32_t lsm6dsox_sh_slv2_cfg_read(lsm6dsox_ctx_t *ctx,
-                                 lsm6dsox_sh_cfg_read_t *val);
+                                  lsm6dsox_sh_cfg_read_t *val);
 int32_t lsm6dsox_sh_slv3_cfg_read(lsm6dsox_ctx_t *ctx,
-                                 lsm6dsox_sh_cfg_read_t *val);
+                                  lsm6dsox_sh_cfg_read_t *val);
 
 int32_t lsm6dsox_sh_status_get(lsm6dsox_ctx_t *ctx,
-                              lsm6dsox_status_master_t *val);
+                               lsm6dsox_status_master_t *val);
 typedef enum {
   LSM6DSOX_S4S_TPH_7bit   = 0,
   LSM6DSOX_S4S_TPH_15bit  = 1,
 } lsm6dsox_s4s_tph_res_t;
 int32_t lsm6dsox_s4s_tph_res_set(lsm6dsox_ctx_t *ctx,
-                                lsm6dsox_s4s_tph_res_t val);
+                                 lsm6dsox_s4s_tph_res_t val);
 int32_t lsm6dsox_s4s_tph_res_get(lsm6dsox_ctx_t *ctx,
-                                lsm6dsox_s4s_tph_res_t *val);
+                                 lsm6dsox_s4s_tph_res_t *val);
 
 int32_t lsm6dsox_s4s_tph_val_set(lsm6dsox_ctx_t *ctx, uint16_t val);
 int32_t lsm6dsox_s4s_tph_val_get(lsm6dsox_ctx_t *ctx, uint16_t *val);
@@ -2889,9 +2889,9 @@ typedef enum {
   LSM6DSOX_S4S_DT_RES_14 = 3,
 } lsm6dsox_s4s_res_ratio_t;
 int32_t lsm6dsox_s4s_res_ratio_set(lsm6dsox_ctx_t *ctx,
-                                  lsm6dsox_s4s_res_ratio_t val);
+                                   lsm6dsox_s4s_res_ratio_t val);
 int32_t lsm6dsox_s4s_res_ratio_get(lsm6dsox_ctx_t *ctx,
-                                  lsm6dsox_s4s_res_ratio_t *val);
+                                   lsm6dsox_s4s_res_ratio_t *val);
 
 int32_t lsm6dsox_s4s_command_set(lsm6dsox_ctx_t *ctx, uint8_t val);
 int32_t lsm6dsox_s4s_command_get(lsm6dsox_ctx_t *ctx, uint8_t *val);
@@ -3021,9 +3021,9 @@ typedef struct {
 } lsm6dsox_pin_int1_route_t;
 
 int32_t lsm6dsox_pin_int1_route_set(lsm6dsox_ctx_t *ctx,
-                                   lsm6dsox_pin_int1_route_t val);
+                                    lsm6dsox_pin_int1_route_t val);
 int32_t lsm6dsox_pin_int1_route_get(lsm6dsox_ctx_t *ctx,
-                                   lsm6dsox_pin_int1_route_t *val);
+                                    lsm6dsox_pin_int1_route_t *val);
 
 typedef struct {
   uint8_t drdy_ois      : 1; /* OIS chain data ready */
@@ -3146,7 +3146,7 @@ typedef struct {
 int32_t lsm6dsox_all_sources_get(lsm6dsox_ctx_t *ctx,
                                  lsm6dsox_all_sources_t *val);
 
-typedef struct{
+typedef struct {
   uint8_t odr_fine_tune;
 } lsm6dsox_dev_cal_t;
 int32_t lsm6dsox_calibration_get(lsm6dsox_ctx_t *ctx, lsm6dsox_dev_cal_t *val);
@@ -3212,7 +3212,7 @@ typedef struct {
         LSM6DSOX_GY_UI_1000dps  = 4,
         LSM6DSOX_GY_UI_2000dps  = 6,
       } fs;
-    }gy;
+    } gy;
   } ui;
   struct {
     enum {
@@ -3284,25 +3284,25 @@ typedef struct {
     struct {
       float mg[3];
       int16_t raw[3];
-    }xl;
+    } xl;
     struct {
       float mdps[3];
       int16_t raw[3];
-    }gy;
+    } gy;
     struct {
       float deg_c;
       int16_t raw;
-    }heat;
+    } heat;
   } ui;
   struct {
     struct {
       float mg[3];
       int16_t raw[3];
-    }xl;
+    } xl;
     struct {
       float mdps[3];
       int16_t raw[3];
-    }gy;
+    } gy;
   } ois;
 } lsm6dsox_data_t;
 int32_t lsm6dsox_data_get(lsm6dsox_ctx_t *ctx, lsm6dsox_ctx_t *aux_ctx,
