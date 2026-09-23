@@ -73,7 +73,7 @@ void setup() {
   // Set accelerometer scale at +- 2G. Available values are +- 2, 4, 8, 16 G
   lsm6dsoxSensor.Set_X_FS(2);
 
-  // Set gyroscope scale at +- 125 degres per second. Available values are +- 125, 250, 500, 1000, 2000 dps
+  // Set gyroscope scale at +- 125 degrees per second. Available values are +- 125, 250, 500, 1000, 2000 dps
   lsm6dsoxSensor.Set_G_FS(125);
 
 
