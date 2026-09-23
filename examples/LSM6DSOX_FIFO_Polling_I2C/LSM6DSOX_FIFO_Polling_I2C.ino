@@ -98,13 +98,13 @@ void setup() {
 
   /** Set FIFO operation mode. Available values are:
    * LSM6DSOX_BYPASS_MODE: FIFO is not used, the buffer content is cleared
-   * LSM6DSOX_FIFO_MODE: bufer continues filling until it becomes full. Then it stops collecting data.
+   * LSM6DSOX_FIFO_MODE: buffer continues filling until it becomes full. Then it stops collecting data.
    * LSM6DSOX_STREAM_MODE: continuous mode. Older data are replaced by the new data.
    * LSM6DSOX_STREAM_TO_FIFO_MODE: FIFO buffer starts operating in Continuous mode and switches to FIFO mode when an event condition occurs.
    * LSM6DSOX_BYPASS_TO_STREAM_MODE: FIFO buffer starts operating in Bypass mode and switches to Continuous mode when an event condition occurs.
    * */
   lsm6dsoxSensor.Set_FIFO_Mode(LSM6DSOX_BYPASS_MODE); // flush any previous value in FIFO before start
-  lsm6dsoxSensor.Set_FIFO_Mode(LSM6DSOX_STREAM_MODE); // start batching in continous mode
+  lsm6dsoxSensor.Set_FIFO_Mode(LSM6DSOX_STREAM_MODE); // start batching in continuous mode
   
   // Set FIFO watermark level. Can be used to check when the number of samples in buffer reaches this defined threshold level.
   lsm6dsoxSensor.Set_FIFO_Watermark_Level(WTM_LV);
